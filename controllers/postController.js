@@ -8,7 +8,6 @@ const getPost = (res) => {
         throw err
     })
 }
-
 const createPost = (data, res) => {
     Models.Posts.create(data).then(function (data) {
         res.send({ result: 200 , data: data})
@@ -17,7 +16,16 @@ const createPost = (data, res) => {
     })
 }
 
+const deletePost = (id, res) => {
+    Models.Posts.destroy({where: {id: id}}).then(function (data) {
+        res.send({ result: 200 , data: data})
+    }).catch(err => {
+        throw err
+    })
+}
+
 module.exports = {
     getPost,
-    createPost
+    createPost,
+    deletePost
 }
