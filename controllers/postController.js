@@ -1,7 +1,6 @@
 "use strict";
 const sequelize = require("sequelize");
 const Models = require("../models");
-
 const getPost = (res) => {
     Models.Posts.findAll({}).then(function (data) {
         res.send({result: 200 , data: data})
@@ -10,6 +9,15 @@ const getPost = (res) => {
     })
 }
 
+const createPost = (data, res) => {
+    Models.Posts.create(data).then(function (data) {
+        res.send({ result: 200 , data: data})
+    }).catch(err => {
+        throw err
+    })
+}
+
 module.exports = {
-    getPost
+    getPost,
+    createPost
 }
