@@ -13,6 +13,7 @@ app.use(express.static(__dirname + '/public'));
 
 let postRoutes = require('./routes/postRoutes')
 app.use('/api/posts', postRoutes)
+
 app.listen(port,()=>{
   console.log("Listening on port ", port);
 });
