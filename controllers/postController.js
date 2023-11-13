@@ -16,6 +16,14 @@ const createPost = (data, res) => {
     })
 }
 
+const getPostById = (id, res) => {
+    Models.Posts.findOne({where: {id: id}}).then(function (data) {
+        res.send({ result: 200 , data: data})
+    }).catch(err => {
+        throw err
+    })
+}
+
 const updatePost = (id, data, res) => {
     Models.Posts.update(data, {where: {id: id}}).then(function (data) {
         res.send({ result: 200 , data: data})
@@ -23,7 +31,6 @@ const updatePost = (id, data, res) => {
         throw err
     })
 }
-
 const deletePost = (id, res) => {
     Models.Posts.destroy({where: {id: id}}).then(function (data) {
         res.send({ result: 200 , data: data})
@@ -34,6 +41,7 @@ const deletePost = (id, res) => {
 module.exports = {
     getPost,
     createPost,
+    getPostById,
     updatePost,
     deletePost
 }
